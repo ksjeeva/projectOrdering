@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enjoy Your Day with US</title>
+    <link rel="stylesheet" href="order.css" />
+    <link rel="icon" href="images/logo.png" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="top-bar">
+      <p>
+        <span>N K </span>C o f f e e . . .
+        <span><i class="bx bxs-coffee"></i></span>
+      </p>
+    </div>
+    <a href="cart.html" class="cartA" id="cart">
+      <i class="cart bx bxs-cart-alt"></i>
+    </a>
+    <div class="slider">
+      <div class="slider-container">
+        <img src="images/slide1.jpg" class="slider-image" />
+        <img src="images/slide2.webp" class="slider-image" />
+        <img src="images/slide3.jpg" class="slider-image" />
+        <img src="images/slide4.jpg" class="slider-image" />
+        <img src="images/slide6.jpg" class="slider-image" />
+        <img src="images/slide7.jpg" class="slider-image" />
+      </div>
+    </div>
+    <div class="items">
+      <h1>Coffee</h1>
+      <div class="ice-cream coffee"></div>
+      <p class="order-name">
+        Coffee
+        <a href="#" class="order-btn" onclick="toggleItems('coffee')">
+          <i class="bx bxs-right-arrow-circle"></i>
+        </a>
+      </p>
+      <table class="Items" id="coffeeItems" style="display: none">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Add</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Coffee items here -->
+          <td>1</td>
+          <td>Coffee</td>
+          <td>20Rs</td>
+          <td><i class="add bx bxs-plus-circle"></i></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Cold Coffee</td>
+          <td>25Rs</td>
+          <td><i class="add bx bxs-plus-circle"></i></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Chocolate Coffee</td>
+          <td>30Rs</td>
+          <td><i class="add bx bxs-plus-circle"></i></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Black Coffee</td>
+          <td>15Rs</td>
+          <td><i class="add bx bxs-plus-circle"></i></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Light Coffee</td>
+          <td>20Rs</td>
+          <td><i class="add bx bxs-plus-circle"></i></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Strong Coffee</td>
+          <td>25Rs</td>
+          <td><i class="add bx bxs-plus-circle"></i></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Lemon Coffee</td>
+          <td>30Rs</td>
+          <td><i class="add bx bxs-plus-circle"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="items">
+      <h1>Ice Cream</h1>
+      <div class="ice-cream"></div>
+      <p class="order-name">
+        Ice Cream
+        <a href="#" class="order-btn" onclick="toggleItems('iceCream')">
+          <i class="bx bxs-right-arrow-circle"></i>
+        </a>
+      </p>
+      <table class="Items" id="iceCreamItems" style="display: none">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Add</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Ice cream items here -->
+        
+          <tr>
+            <td>1</td>
+            <td>Strawberry</td>
+            <td>20Rs</td>
+            <td><i class="add bx bxs-plus-circle"></i></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Blueberry</td>
+            <td>25Rs</td>
+            <td><i class="add bx bxs-plus-circle"></i></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>BlackCurrent</td>
+            <td>30Rs</td>
+            <td><i class="add bx bxs-plus-circle"></i></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Vanilla</td>
+            <td>15Rs</td>
+            <td><i class="add bx bxs-plus-circle"></i></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Chocolate</td>
+            <td>20Rs</td>
+            <td><i class="add bx bxs-plus-circle"></i></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Mango</td>
+            <td>25Rs</td>
+            <td><i class="add bx bxs-plus-circle"></i></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Butterscotch</td>
+            <td>30Rs</td>
+            <td><i class="add bx bxs-plus-circle"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="items">
+        <h1>Chart Items</h1>
+        <div class="ice-cream chart"></div>
+        <p class="order-name">
+          Chart  Items
+          <a href="#" class="order-btn" onclick="toggleItems('ChartItems')">
+            <i class="bx bxs-right-arrow-circle"></i>
+          </a>
+        </p>
+        <table class="Items" id="ChartItems" style="display: none">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Add</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ice cream items here -->
+          
+            <tr>
+              <td>1</td>
+              <td>BauvBaaji</td>
+              <td>20Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>kalaan Manjurin</td>
+              <td>25Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Paani Poori</td>
+              <td>30Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Masal Poori</td>
+              <td>15Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>RasaPoori</td>
+              <td>20Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Thattu Vadai</td>
+              <td>25Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Sanwitch</td>
+              <td>30Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Burger</td>
+              <td>30Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <div class="items">
+        <h1>Juice</h1>
+        <div class="ice-cream Juice"></div>
+        <p class="order-name">
+          Juice
+          <a href="#" class="order-btn" onclick="toggleItems('Juice')">
+            <i class="bx bxs-right-arrow-circle"></i>
+          </a>
+        </p>
+        <table class="Items" id="Juice" style="display: none">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Add</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Ice cream items here -->
+          
+            <tr>
+              <td>1</td>
+              <td>Froot Juice</td>
+              <td>20Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Mango Juice</td>
+              <td>25Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Padaam paal</td>
+              <td>30Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Rose Milk</td>
+              <td>15Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Lemon Juice</td>
+              <td>20Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Coconet Juice</td>
+              <td>25Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Watermelon Juice</td>
+              <td>30Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Pinapple Juice</td>
+              <td>30Rs</td>
+              <td><i class="add bx bxs-plus-circle"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <script src="script.js"></script>
+  </body>
+</html>

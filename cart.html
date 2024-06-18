@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Items</title>
+    <link rel="icon" href="images/logo.png" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+      }
+      @media only screen and (max-width: 600px) {
+        .Items {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+          margin-left: 0;
+        }
+        .Items th,
+        .Items td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: center;
+          font-size: 14px; /* Center-align text for better readability on mobile */
+        }
+
+        .Items th {
+          background-color: #f2f2f2;
+        }
+
+        .Items tbody tr:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        .Items tbody tr:hover {
+          background-color: #f1f1f1;
+        }
+
+        /* Hide the S.No column on mobile */
+        .Items th:first-child,
+        .Items td:first-child {
+          display: none;
+        }
+
+        /* Adjust padding for better spacing on mobile */
+        .Items th,
+        .Items td {
+          padding: 6px;
+        }
+
+        /* Make the Remove icon larger for easier tapping on mobile */
+        .Items .bx {
+          font-size: 1.5em;
+        }
+        .totalPrice {
+          margin-top: 30px;
+          margin-left: 85px;
+          font-size: 20px;
+          font-weight: 600;
+        }
+        span {
+          color: crimson;
+        }
+        .remove {
+          color: crimson;
+          cursor: pointer;
+        }
+        .place-order {
+          padding: 10px 20px;
+          background: linear-gradient(crimson, red);
+          border: none;
+          outline: none;
+          cursor: pointer;
+          margin-bottom: 30px;
+          font-size: 16px;
+          font-weight: 500;
+          border-radius: 30px;
+          color: #fff;
+          margin-top: 30px;
+          margin-left: 32%;
+        }
+
+        .pop-up.success {
+          visibility: visible;
+          top: 50%;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        .pop-up {
+          width: 300px;
+          background: #fff;
+          border-radius: 6px;
+          position: absolute;
+          top: 0%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.1);
+          text-align: center;
+          padding: 0 20px 30px;
+          color: #333;
+          border: 2px solid gray;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          visibility: hidden;
+          transition: transform 0.4s, top 0.4s;
+        }
+        .pop-up img {
+          width: 100px;
+          margin-top: -50px;
+          border-radius: 50%;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .pop-up h2 {
+          font-size: 28px;
+          font-weight: 500;
+          margin: 30px 0 10px;
+        }
+        .pop-up button {
+          width: 100%;
+          margin-top: 50px;
+          padding: 10px 0;
+          background: #6fd649;
+          color: #fff;
+          border: 0;
+          outline: none;
+          font-size: 18px;
+          border-radius: 4px;
+          cursor: pointer;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table class="Items">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Total Price</th>
+          <th>Quantity</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cartItems"></tbody>
+    </table>
+    <p class="totalPrice">Total Price = <span id="Totals"></span></p>
+
+    <button class="place-order" type="submit" onclick="successPopup()">
+      Place Order
+    </button>
+    <div class="pop-up" id="popup">
+      <img src="images/Success.png" />
+      <h2>Your Order has been successfully placed</h2>
+      <p>Your Order comes within 15mins</p>
+      <p>
+        Enjoy the day with us
+        <i class="bx bxs-wink-smile" style="color: crimson"></i>
+      </p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+    <script>
+      function successPopup() {
+        let success = document.getElementById("popup");
+        success.classList.add("success");
+      }
+
+      function closePopup() {
+        let success = document.getElementById("popup");
+        success.classList.remove("success");
+      }
+      let cartItems = localStorage.getItem("cartItems");
+      let cartItemsContainer = document.getElementById("cartItems");
+      if (cartItems) {
+        cartItems = JSON.parse(cartItems);
+        renderCartItems();
+      }
+
+      function renderCartItems() {
+        cartItemsContainer.innerHTML = ""; // Clear the current cart items
+
+        // Re-render all cart items
+        cartItems.forEach((item, index) => {
+          let row = document.createElement("tr");
+          row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${item.name}</td>
+        <td>${item.price}Rs</td>
+        <td>${item.totalPrice}Rs</td>
+        <td>${item.quantity}</td>
+        <td><i class="remove bx bxs-minus-circle" onclick='removeQuantity("${
+          item.name
+        }")'></i></td>
+      `;
+          cartItemsContainer.appendChild(row);
+        });
+
+        // Recalculate and display the total price
+        total();
+      }
+
+      function total() {
+        let totalAmount = document.getElementById("Totals");
+        let totalPrice = 0; // Variable to store the total price
+
+        cartItems.forEach((item, index) => {
+          totalPrice += item.totalPrice; // Add the item's total price to the totalAmount
+        });
+
+        // Display the total price in the totalAmount element
+        totalAmount.textContent = totalPrice.toFixed(2); // Format the total price to two decimal places
+      }
+      function removeQuantity(itemName) {
+        const itemIndex = cartItems.findIndex((item) => item.name === itemName);
+
+        if (itemIndex !== -1) {
+          // Subtract the quantity and total price of the item
+          cartItems[itemIndex].quantity--;
+          cartItems[itemIndex].totalPrice -= cartItems[itemIndex].price;
+
+          // If the quantity becomes zero, remove the item from the cart
+          if (cartItems[itemIndex].quantity === 0) {
+            cartItems.splice(itemIndex, 1);
+          }
+
+          // Update the cartItems in localStorage
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+          // Re-render the cart items
+          renderCartItems();
+        }
+      }
+    </script>
+  </body>
+</html>
